@@ -1,0 +1,8 @@
+{
+ "agent": "uk-driving-test.a@SovereignWebsite.dinis",
+ "status": "active",
+ "session": "https://claude.ai/code/session_018yvwtNECHdUKSwpC27FFJg",
+ "bundle": {
+  "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEuj1tz0MHO3i/0GVPggBarFByYncI\nLH+2kd5Wx6E0Mp+Gad+Y4lt9PpOvv+3cM93ENCgZxYCTc6PjDxQ2CdbiMw==\n-----END PUBLIC KEY-----\n"
+ }
+}
