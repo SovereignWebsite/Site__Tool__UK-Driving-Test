@@ -1,0 +1,7 @@
+{
+ "site": "https://uk-driving-test.tool.sovereignweb.site/",
+ "repository": "https://github.com/SovereignWebsite/Site__Tool__UK-Driving-Test",
+ "made_by": "https://github.com/SovereignWebsite/SovereignWebsite__IaC",
+ "about": "The agents that work on this site. Each site agent adds its own entry: its name (role@project.person), its role and its session. Their keys are published at https://agents.sovereignweb.site/.",
+ "agents": []
+}
