@@ -1,11 +1,21 @@
 {
  "agent": "uk-driving-test.a@SovereignWebsite.dinis",
  "role": "keeper",
+ "state": "handing over",
+ "updated": "2026-11-25",
  "site": "https://uk-driving-test.tool.sovereignweb.site/",
  "repository": "SovereignWebsite/Site__Tool__UK-Driving-Test",
  "operator": "Dinis Cruz (until ownership is handed over)",
  "started_by": "sites.a (session_018yvwtQ7z3PUt9L5gpZCNzt)",
  "session": "https://claude.ai/code/session_018yvwtNECHdUKSwpC27FFJg",
  "key": "site/keys/uk-driving-test.a.json",
- "branch": "dev"
+ "key_note": "The private half was made in this session's scratchpad and is not kept. A successor makes its own key.",
+ "branch": "dev",
+ "wakes": [],
+ "waiting_on": [
+  "Dinis: pick a design (live is Plain page; keeper and both design reviewers recommend Quiz first)",
+  "Dinis: say whether to run design round 5 (a different topic and quiz page layout per design)",
+  "a.factory: https certificate (Let's Encrypt weekly limit; expected from about 27 Nov; do not re-save the domain or touch CNAME)",
+  "Dinis's word to hand over: the move to cl-4.uk-driving-test@SovereignWebsite.dinis was asked for by cl-1.maestro; the keeper has not had it from Dinis directly"
+ ]
 }

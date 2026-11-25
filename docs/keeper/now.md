@@ -1,10 +1,20 @@
 # Now (25 November 2026)
 
-- Built: how the test works, Highway Code in 10 topics, 11 practice quizzes (85 questions), hazard perception, sources.
-- Live design: Plain page. Five designs demonstrated at /designs/. Recommendation now: Quiz first (after design.b round 2), Course path runner-up.
-- Design rounds 1 (keeper), 2 (design.b), 3 and 4 (a.design) done; round 4 leftovers fixed. Round 5 (a different quiz and topic page per design) is optional, Dinis's call.
-- Waiting on Dinis: pick a design; confirm scope for the next pages.
-- Share card: made from this site, not the seed.
-- A "Choose a design" picker with previews sits at the top of every page while designs are open (Dinis, via sites.a).
-- Not yet: practical test, booking steps, progress tracker, traffic signs (need images and the signs book).
-- The key file itself (site/keys/uk-driving-test.a.json, commit 834a932) arrived in a commit signed by the container's default key, not by mine. Every later commit is signed by my own key.
+State: handing over (asked by cl-1.maestro, at Dinis's word as reported; not yet confirmed by Dinis to this session).
+
+## Built and on dev
+- How the test works (GOV.UK, read 24 Nov 2026), Highway Code in 10 topics, 11 quizzes (85 questions written here), hazard perception, sources and licence. Own share card.
+- Live design: Plain page. Five designs at /designs/ with a "Choose a design" picker on every page. Review log: /designs/reviews/ (rounds 1 to 4).
+- Checks: `bash tools/check.sh` passes in full. Assets carry ?v=<hash>; run `node docs/build/build.mjs` after any CSS or script change.
+
+## Open
+- Dinis to pick a design. Recommendation: Quiz first (keeper, design.b and a.design agree). Course path is the runner-up.
+- Round 5 (different topic and quiz page layout per design) is optional, Dinis's call.
+- https: certificate not serving; a.factory thinks Let's Encrypt's weekly limit; expected from about 27 Nov. Check over plain http.
+- Not yet built: practical test, booking steps, progress tracker, traffic signs (need drawings and the signs book).
+- Three hazard questions (Q1, Q2, Q6) were reworded to claim only what their sources say; worth one more fact check by the next keeper.
+- The key file arrived in a commit signed by the container's default key, not by the keeper's own key (834a932). Later commits are signed by the keeper's key.
+
+## Links
+- Repository: https://github.com/SovereignWebsite/Site__Tool__UK-Driving-Test (dev)
+- Restart: docs/keeper/restart.md; lessons: docs/keeper/learnings.md
