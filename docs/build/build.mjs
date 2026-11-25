@@ -77,7 +77,7 @@ const bodyQuiz = (slug) => {
   const items = qs.map((q, i) => `<li class="q" data-answer="${q.a}"><fieldset><legend><span class="qn">Question ${i + 1} of ${n}</span> ${esc(q.q)}</legend>
 ${q.o.map((o, j) => `<label class="opt"><input type="radio" name="q${i}" value="${j}"> <span>${esc(o)}</span></label>`).join('\n')}
 </fieldset>
-<div class="why"><p class="verdict"><strong class="vtext"></strong> The answer is: <em>${esc(q.o[q.a])}</em></p><p>${esc(q.w)}</p><p class="cite">Highway Code: ${q.r.map((r) => `<a href="${ruleUrl(r)}">${ruleLabel(r)}</a>`).join(', ')}</p></div></li>`).join('\n');
+<div class="why"><p class="verdict"><strong class="vtext"></strong> The answer is: <em>${esc(q.o[q.a])}</em></p><p>${esc(q.w)}</p><p class="cite">Highway Code: ${q.r.map((r) => `<a href="${ruleUrl(r)}">${ruleLabel(r)}</a>`).join(', ')}${q.gov ? `. Also ${ext(TEST.parts[q.gov[0]], esc(q.gov[1]))}, read on ${READ}` : ''}</p></div></li>`).join('\n');
   return `<p class="lede">${n} practice questions written by this site, not official DVSA questions. Choose one answer for each, then check. Each explanation names the Highway Code rule it comes from. Your result is saved only in this browser, if you allow it.</p>
 <form class="quiz" data-quiz="${slug}" data-total="${n}"><ol class="qlist">${items}</ol>
 <div class="actions"><button type="submit" class="btn">Check my answers</button> <button type="reset" class="btn alt">Start again</button></div>

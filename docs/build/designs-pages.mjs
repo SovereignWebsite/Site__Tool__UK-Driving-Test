@@ -16,10 +16,10 @@ ${footer}
 
 export function designsHub(a) {
   const { DESIGNS, LIVE, esc } = a;
-  const cards = DESIGNS.map((d) => `<li class="dcard" id="${d.id}"><h2>${esc(d.name)}${d.id === LIVE ? ' <span class="live">live now</span>' : ''}${d.id === RECOMMENDATION.id ? ' <span class="rec">recommended</span>' : ''}</h2>
+  const cards = DESIGNS.map((d) => `<li class="dcard" id="${d.id}"><div class="thumb t-${d.id}" aria-hidden="true"><i></i><i></i><i></i><i></i></div><h2>${esc(d.name)}${d.id === LIVE ? ' <span class="live">live now</span>' : ''}${d.id === RECOMMENDATION.id ? ' <span class="rec">recommended</span>' : ''}</h2>
 <p>${esc(d.tagline)}</p><p><strong>Best for:</strong> ${esc(d.best_for)}</p>
 <p class="links"><a href="/designs/${d.id}/">Home page</a> <a href="/designs/${d.id}/topic/">A topic page</a> <a href="/designs/${d.id}/quiz/">A quiz</a></p></li>`).join('');
-  const body = `<p class="lede">Five structural design directions for this site. They differ in layout and navigation, not only in colour. The live site uses one of them (${esc(DESIGNS.find((d) => d.id === LIVE).name)}) until the owner picks. Each demonstration has a home page, a Highway Code topic page and a working quiz, using the same content.</p>
+  const body = `<p class="lede"><strong>Choose a design.</strong> Five structural design directions for this site. They differ in layout and navigation, not only in colour. The live site uses one of them (${esc(DESIGNS.find((d) => d.id === LIVE).name)}) until the owner picks. Each demonstration has a home page, a Highway Code topic page and a working quiz, using the same content.</p>
 <ul class="dcards">${cards}</ul>
 <section aria-labelledby="rec"><h2 id="rec">Recommendation</h2>
 <p><strong>${esc(DESIGNS.find((d) => d.id === RECOMMENDATION.id).name)}.</strong> ${esc(RECOMMENDATION.why)}</p>
