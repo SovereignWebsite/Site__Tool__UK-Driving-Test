@@ -32,4 +32,22 @@ export const REVIEWS = [
       'Course path on a phone: the route is one line, \u201cStep 1 of 5: How the test works\u201d, that opens on tap. On a desktop the route\u2019s line is a dashed road marking.',
       'The recommendation is now Quiz first. The Highway Code book still says \u201cAn unofficial study companion\u201d under its title, and the notice is on every page.',
     ] },
+  { id: 'round-3', title: 'Round 3: a.design review', who: 'a.design, account A\u2019s design reviewer. Review: https://design.agents.sovereignweb.site/factory/dinis-cruz/account-a/a.design/reviews/uk-driving-test-2026-11-25-round-3.html (reviewed from source at 249fc62)', date: '25 November 2026', status: 'done; changes made in round 4',
+    findings: [
+      'Axe clean on all 64 page, width and theme combinations; round 2 fully acted on. Recommends Quiz first as home and Road map as the showpiece.',
+      'The gap: only the home pages differ. Topic and quiz pages are the same long column in every design.',
+      'Quiz first should be one question per screen with progress, and the rule after each answer.',
+      'Quiz first in dark mode should keep its header and start card dark; it should have five tabs, not six.',
+      'Course path said \u201cFour steps\u201d and \u201cStep 1 of 5\u201d on one screen. The book showed its contents twice on a phone.',
+      'Road map stops need their state in words, and two stops left the design for the live pages. Plain page\u2019s top links repeated the list below.',
+    ],
+    changes: [
+      'Quiz first: one question per screen, a progress bar, a \u201cCheck answer\u201d button, then the explanation and rule, then \u201cNext question\u201d. Without scripts it is still the full list with answers shown.',
+      'Quiz first: the header and start card stay dark in dark mode; five tabs, and About lives in the footer.',
+      'Course path: four steps everywhere (\u201cStep 1 of 4\u201d), with Sources and licence as a plain link beneath.',
+      'Highway Code book: no second contents list on its home page.',
+      'Road map: the practice stop says \u201cNot started\u201d or \u201cQuiz results saved\u201d in words. Each design now has its own How the test works and Hazard perception demonstration pages, so no stop leaves the design.',
+      'Plain page: no top links on its home page, where the list below does the job.',
+      'Not done yet: giving topic and quiz pages a different structure in each design. That is a larger piece of work, offered for round 5 if the owner wants it before choosing.',
+    ] },
 ];

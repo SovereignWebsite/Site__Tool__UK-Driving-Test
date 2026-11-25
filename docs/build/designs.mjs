@@ -23,7 +23,7 @@ const plain = {
 <a class="skip" href="#main">Skip to content</a>
 ${family}${unofficial}
 <header class="top"><a class="name" href="${ctx.href('home')}">${SITE}</a>
-<nav class="own" aria-label="Main">${navItems(ctx, NAV.slice(1), key, esc)}</nav></header>
+${key === 'home' ? '' : `<nav class="own" aria-label="Main">${navItems(ctx, NAV.slice(1), key, esc)}</nav>`}</header>
 <main id="main">${crumbHtml(crumbs, esc)}<h1>${esc(h1)}</h1>
 ${body}
 </main>
@@ -49,8 +49,8 @@ const course = {
 ${family}${unofficial}
 <div class="wrap">
 <aside class="route"><a class="name" href="${ctx.href('home')}">${SITE}</a>
-<nav class="route-full" aria-label="Your route"><ol>${NAV.slice(1).map(([k, label], i) => `<li><a href="${ctx.href(k)}"${k === key ? ' aria-current="page"' : ''}><span class="num" aria-hidden="true">${i + 1}</span><span>${esc(label)}${k === key ? ' <em class="here">You are here</em>' : ''}</span></a></li>`).join('')}</ol></nav>
-${(() => { const items = NAV.slice(1); const at = Math.max(0, items.findIndex(([k]) => k === key)); return `<details class="route-compact"><summary>Step ${at + 1} of ${items.length}: ${esc(items[at][1])}</summary><nav aria-label="Your route, steps"><ol>${items.map(([k, label], i) => `<li><a href="${ctx.href(k)}"${k === key ? ' aria-current="page"' : ''}>${i + 1}. ${esc(label)}</a></li>`).join('')}</ol></nav></details>`; })()}
+<nav class="route-full" aria-label="Your route"><ol>${NAV.slice(1, 5).map(([k, label], i) => `<li><a href="${ctx.href(k)}"${k === key ? ' aria-current="page"' : ''}><span class="num" aria-hidden="true">${i + 1}</span><span>${esc(label)}${k === key ? ' <em class="here">You are here</em>' : ''}</span></a></li>`).join('')}</ol><p class="aside-link"><a href="${ctx.href('sources')}"${key === 'sources' ? ' aria-current="page"' : ''}>Sources and licence</a></p></nav>
+${(() => { const items = NAV.slice(1, 5); const at = items.findIndex(([k]) => k === key); const label = at < 0 ? (key === 'sources' ? 'Sources and licence' : 'Start here') : `Step ${at + 1} of ${items.length}: ${esc(items[at][1])}`; return `<details class="route-compact"><summary>${label}</summary><nav aria-label="Your route, steps"><ol>${items.map(([k, l], i) => `<li><a href="${ctx.href(k)}"${k === key ? ' aria-current="page"' : ''}>${i + 1}. ${esc(l)}</a></li>`).join('')}</ol><p><a href="${ctx.href('sources')}">Sources and licence</a></p></nav></details>`; })()}
 </aside>
 <main id="main">${crumbHtml(crumbs, esc)}<h1>${esc(h1)}</h1>
 ${body}
@@ -82,7 +82,7 @@ ${family}${unofficial}
 ${body}
 ${footer}
 </main>
-<nav class="tabs" aria-label="Main">${tabs.map(([k, l]) => `<a href="${ctx.href(k)}"${k === key ? ' aria-current="page"' : ''}>${esc(l)}</a>`).join('')}<a href="${ctx.href('sources')}"${key === 'sources' ? ' aria-current="page"' : ''}>About</a></nav>
+<nav class="tabs" aria-label="Main">${tabs.map(([k, l]) => `<a href="${ctx.href(k)}"${k === key ? ' aria-current="page"' : ''}>${esc(l)}</a>`).join('')}</nav>
 </body>`;
   },
   home: (ctx, d) => `<p class="lede">Practise for the UK theory test in short rounds. Every question cites the Highway Code rule.</p>
@@ -104,7 +104,7 @@ const book = {
 ${family}${unofficial}
 <header class="mast"><p class="plate">${sign('warn', 40)}${sign('order', 40)}${sign('info', 40)}</p><a class="name" href="${ctx.href('home')}">${SITE}</a><p class="sub">An unofficial study companion</p></header>
 <div class="cols">
-<nav class="toc" aria-label="Contents"><p class="toch">Contents</p><ol>${NAV.slice(1).map(([k, label]) => `<li><a href="${ctx.href(k)}"${k === key ? ' aria-current="page"' : ''}>${esc(label)}</a></li>`).join('')}</ol></nav>
+<nav class="toc${key === 'home' ? ' home-toc' : ''}" aria-label="Contents"><p class="toch">Contents</p><ol>${NAV.slice(1).map(([k, label]) => `<li><a href="${ctx.href(k)}"${k === key ? ' aria-current="page"' : ''}>${esc(label)}</a></li>`).join('')}</ol></nav>
 <main id="main">${crumbHtml(crumbs, esc)}<h1>${esc(h1)}</h1>
 ${body}
 </main></div>
@@ -142,7 +142,7 @@ ${footer}
 <ol class="road">
 <li><span class="stop" aria-hidden="true"></span>${sign('info', 44)}<div><h2><a href="${d.hrefs.test}">Stop 1: the test</a></h2><p>Two parts, the timings and pass marks, and what to take.</p></div></li>
 <li><span class="stop" aria-hidden="true"></span>${sign('warn', 44)}<div><h2><a href="${d.hrefs.hc}">Stop 2: the rules</a></h2><p>The Highway Code in ten topics, every rule linked to the source.</p></div></li>
-<li><span class="stop" data-lit="practice" aria-hidden="true"></span>${sign('order', 44)}<div><h2><a href="${d.hrefs.practice}">Stop 3: practise</a></h2><p>Quizzes by topic. Each answer names its rule.</p></div></li>
+<li><span class="stop" data-lit="practice" aria-hidden="true"></span>${sign('order', 44)}<div><h2><a href="${d.hrefs.practice}">Stop 3: practise</a></h2><p>Quizzes by topic. Each answer names its rule.</p><p class="state" data-state="practice">Not started</p></div></li>
 <li><span class="stop" aria-hidden="true"></span>${sign('warn', 44)}<div><h2><a href="${d.hrefs.hazard}">Stop 4: spot the hazard</a></h2><p>What a developing hazard is, and how to scan for one.</p></div></li>
 </ol>
 <p class="note">Unofficial. Questions are written by this site. Check <a href="https://www.gov.uk/theory-test">GOV.UK</a> for the rules, booking and fees. <a href="${d.hrefs.sources}">Sources and licence</a>.</p>`,

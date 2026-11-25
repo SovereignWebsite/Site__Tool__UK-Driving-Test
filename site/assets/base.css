@@ -66,3 +66,4 @@ dl.look dt{font-weight:700;margin-top:1rem}dl.look dd{margin:.2rem 0 0}
 .unofficial-foot{font-weight:700;color:var(--fg)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media print{.family-credit,.skip,.tabs,.route,.toc,.menu{display:none}}
+[hidden]{display:none!important}

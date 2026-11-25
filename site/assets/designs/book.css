@@ -18,3 +18,4 @@
 .d-book .foot{margin-top:1rem}
 @media (max-width:48rem){.d-book .cols{display:block}.d-book .toc{position:static;margin-bottom:1.5rem;border:1px solid var(--line);padding:.8rem}}
 .d-book .plate{display:flex;justify-content:center;gap:.6rem;margin:0 0 .6rem}
+.d-book .toc.home-toc{display:none}.d-book .cols:has(.home-toc){display:block}

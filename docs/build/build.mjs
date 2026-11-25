@@ -214,6 +214,8 @@ function build(d, base, full) {
       if (key === 'topic') return arg === DEMO_TOPIC ? `${base}/topic/` : `/highway-code/${arg}/`;
       if (key === 'practice') return `${base}/quiz/`;
       if (key === 'quiz') return arg === DEMO_TOPIC ? `${base}/quiz/` : `/practice/${arg}/`;
+      if (key === 'test') return `${base}/test/`;
+      if (key === 'hazard') return `${base}/hazard/`;
       return livePath[key];
     }
     if (key === 'topic') return `/highway-code/${arg}/`;
@@ -239,6 +241,8 @@ function build(d, base, full) {
   } else {
     const t = TOPICS.find((x) => x.slug === DEMO_TOPIC);
     w('topic', P({ key: 'hc', title: T(`${t.title} (${d.name} design)`), h1: t.title, desc: `Design demonstration: ${d.name}.`, path: `${base}/topic/`, body: bodyTopic(t, href('quiz', DEMO_TOPIC)), crumbs: [['Highway Code', `${base}/topic/`]] }));
+    w('test', P({ key: 'test', title: T(`How the theory test works (${d.name} design)`), h1: 'How the theory test works', desc: `Design demonstration: ${d.name}.`, path: `${base}/test/`, body: bodyTest() }));
+    w('hazard', P({ key: 'hazard', title: T(`Hazard perception explained (${d.name} design)`), h1: 'Hazard perception explained', desc: `Design demonstration: ${d.name}.`, path: `${base}/hazard/`, body: bodyHazard(href('quiz', DEMO_TOPIC)) }));
     w('quiz', P({ key: 'practice', title: T(`Quiz: ${t.title} (${d.name} design)`), h1: `Quiz: ${t.title}`, desc: `Design demonstration: ${d.name}.`, path: `${base}/quiz/`, body: bodyQuiz(DEMO_TOPIC), crumbs: [['Practice quizzes', `${base}/quiz/`]] }));
   }
 }
