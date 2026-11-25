@@ -1,0 +1,22 @@
+/* Design 2, Course path. A numbered route down the left. */
+:root{--bg:#fff;--fg:#1a2233;--muted:#4b5568;--accent:#1d3e8a;--accent-fg:#fff;--line:#d5dbe8;--card:#f6f8fc;--ok:#17653a;--bad:#a12a2a;--focus:#b45309;--banner-bg:#e8edf8;--banner-fg:#1a2233;--side:#eef2fa;--measure:44rem}
+@media (prefers-color-scheme:dark){:root{--bg:#10151f;--fg:#e8ecf5;--muted:#aab3c5;--accent:#9db8f5;--accent-fg:#0b1226;--line:#2b3447;--card:#171e2c;--ok:#6fcf97;--bad:#f2a0a0;--focus:#fbbf24;--banner-bg:#1a2233;--banner-fg:#e8ecf5;--side:#151b29}}
+.d-course .wrap{display:grid;grid-template-columns:17rem minmax(0,1fr);min-height:100vh}
+.d-course .route{background:var(--side);border-right:1px solid var(--line);padding:1.5rem 1rem;position:sticky;top:0;align-self:start;height:100vh;overflow:auto}
+.d-course .name{display:block;font-weight:800;color:var(--fg);text-decoration:none;margin-bottom:1.2rem;line-height:1.25}
+.d-course .route ol{list-style:none;margin:0;padding:0;position:relative}
+.d-course .route ol::before{content:"";position:absolute;left:1.05rem;top:1rem;bottom:1rem;width:2px;background:var(--line)}
+.d-course .route li a{display:flex;align-items:center;gap:.7rem;padding:.55rem .3rem;min-height:44px;color:var(--fg);text-decoration:none;position:relative}
+.d-course .num{flex:none;width:2.1rem;height:2.1rem;border-radius:50%;display:grid;place-items:center;background:var(--bg);border:2px solid var(--accent);color:var(--accent);font-weight:800;font-size:.95rem}
+.d-course .route a[aria-current] .num{background:var(--accent);color:var(--accent-fg)}
+.d-course .route a[aria-current]{font-weight:700}
+.d-course .route a:hover span:last-child{text-decoration:underline}
+.d-course main{max-width:var(--measure);padding:2rem 1.5rem 1rem;margin:0}
+.d-course .foot{margin-left:0;padding-left:0}
+.d-course .stepcards{list-style:none;padding:0;margin:1.5rem 0;display:grid;gap:1rem}
+.d-course .stepcards li{display:flex;gap:1rem;padding:1.1rem;background:var(--card);border:1px solid var(--line);border-radius:var(--r,10px)}
+.d-course .stepcards .num{width:2.8rem;height:2.8rem;font-size:1.2rem}
+.d-course .stepcards h2{margin:0 0 .2rem;font-size:1.2rem}
+.d-course .stepcards p{margin:0;color:var(--muted)}
+@media (max-width:50rem){.d-course .wrap{display:block}.d-course .route{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}
+ .d-course .route ol{display:grid;grid-template-columns:repeat(2,1fr);gap:0 .5rem;font-size:.9rem}.d-course .route ol::before{display:none}.d-course main{padding:1.2rem 1rem}}

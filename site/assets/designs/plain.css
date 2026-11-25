@@ -1,0 +1,13 @@
+/* Design 1, Plain page. One column and a top bar. */
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#55544f;--accent:#1f5a41;--accent-fg:#fff;--line:#d9d6ca;--card:#fff;--ok:#1b6b35;--bad:#a12a2a;--focus:#0b57d0;--banner-bg:#eef1ec;--banner-fg:#1d1d1b;--measure:46rem}
+@media (prefers-color-scheme:dark){:root{--bg:#141513;--fg:#ecebe6;--muted:#b1afa7;--accent:#8fd1ae;--accent-fg:#0d1b14;--line:#34352f;--card:#1b1c19;--ok:#6fcf97;--bad:#f2a0a0;--focus:#8ab4f8;--banner-bg:#1f211d;--banner-fg:#ecebe6}}
+.d-plain .top{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.5rem;max-width:var(--measure);margin:0 auto;padding:1.4rem 1rem 0}
+.d-plain .name{font-weight:700;color:var(--fg);text-decoration:none}
+.d-plain .own{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem;font-size:.95rem}
+.d-plain .own a[aria-current]{font-weight:700;text-decoration-thickness:3px}
+.d-plain main{max-width:var(--measure);margin:0 auto;padding:1.5rem 1rem 1rem}
+.d-plain .steps{list-style:none;padding:0;counter-reset:s}
+.d-plain .steps li{counter-increment:s;padding:.9rem 0 .9rem 2.6rem;border-top:1px solid var(--line);position:relative}
+.d-plain .steps li::before{content:counter(s);position:absolute;left:0;top:.9rem;font-weight:700;color:var(--accent)}
+.d-plain .steps a{font-weight:700;font-size:1.15rem}
+.d-plain .steps span{display:block;color:var(--muted)}

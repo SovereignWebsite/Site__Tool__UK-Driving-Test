@@ -1,0 +1,14 @@
+/* The /designs/ hub: its own plain look, so no design is favoured by it. */
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#55544f;--accent:#1f4f7a;--accent-fg:#fff;--line:#d9d6ca;--card:#fff;--ok:#1b6b35;--bad:#a12a2a;--focus:#0b57d0;--banner-bg:#eef1ec;--banner-fg:#1d1d1b;--measure:50rem}
+@media (prefers-color-scheme:dark){:root{--bg:#141513;--fg:#ecebe6;--muted:#b1afa7;--accent:#9cc7ef;--accent-fg:#0b1a29;--line:#34352f;--card:#1b1c19;--ok:#6fcf97;--bad:#f2a0a0;--focus:#8ab4f8;--banner-bg:#1f211d;--banner-fg:#ecebe6}}
+.d-hub .top{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;max-width:var(--measure);margin:0 auto;padding:1.4rem 1rem 0}
+.d-hub .name{font-weight:700;color:var(--fg);text-decoration:none}
+.d-hub .own{display:flex;gap:1.1rem;font-size:.95rem}
+.d-hub main{max-width:var(--measure);margin:0 auto;padding:1.5rem 1rem 1rem}
+.dcards{list-style:none;padding:0;display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))}
+.dcard{padding:1rem 1.2rem;background:var(--card);border:1px solid var(--line);border-radius:8px}
+.dcard h2{margin-top:0}
+.live,.rec{font-size:.75rem;font-weight:700;padding:.1rem .5rem;border-radius:999px;vertical-align:middle;border:1px solid currentColor}
+.rec{color:var(--ok)}.live{color:var(--accent)}
+.dcard .links{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
+.round{margin:1.5rem 0;padding:1rem 1.2rem;background:var(--card);border:1px solid var(--line);border-radius:8px}.round h2{margin-top:0}

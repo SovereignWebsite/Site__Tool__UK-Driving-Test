@@ -1,0 +1,19 @@
+/* Design 4, Highway Code book. Serif, contents beside the text, rule numbers in the margin. */
+:root{--bg:#fffdf6;--fg:#231f1a;--muted:#554d43;--accent:#7a1f1f;--accent-fg:#fff;--line:#d8cfbd;--card:#fbf6e8;--ok:#1b6b35;--bad:#a12a2a;--focus:#0b57d0;--banner-bg:#f1e9d4;--banner-fg:#231f1a;--font:Georgia,"Iowan Old Style","Times New Roman",serif;--r:2px;--measure:60rem}
+@media (prefers-color-scheme:dark){:root{--bg:#17140f;--fg:#efe8d8;--muted:#b9ae9a;--accent:#e7a1a1;--accent-fg:#2a0d0d;--line:#3a3328;--card:#1f1b14;--ok:#6fcf97;--bad:#f2a0a0;--focus:#8ab4f8;--banner-bg:#241f16;--banner-fg:#efe8d8}}
+.d-book .mast{text-align:center;padding:1.8rem 1rem 1rem;border-bottom:3px double var(--line);max-width:var(--measure);margin:0 auto}
+.d-book .name{font-size:clamp(1.4rem,4vw,2.1rem);font-weight:700;color:var(--fg);text-decoration:none}
+.d-book .sub{margin:.2rem 0 0;font-style:italic;color:var(--muted)}
+.d-book .cols{display:grid;grid-template-columns:14rem minmax(0,1fr);gap:2rem;max-width:var(--measure);margin:0 auto;padding:1.5rem 1rem}
+.d-book .toc{position:sticky;top:1rem;align-self:start;font-size:.95rem}
+.d-book .toch{font-variant:small-caps;letter-spacing:.08em;font-weight:700;margin:0 0 .4rem;border-bottom:1px solid var(--line)}
+.d-book .toc ol{list-style:upper-roman;padding-left:1.8rem;margin:0}
+.d-book .toc li{margin:.4rem 0}
+.d-book .toc a[aria-current]{font-weight:700}
+.d-book main{max-width:40rem}
+.d-book h1{font-weight:700;border-bottom:1px solid var(--line);padding-bottom:.4rem}
+.d-book .rules li{grid-template-columns:5.5rem 1fr}
+.d-book .rn{font-variant:small-caps;letter-spacing:.04em;color:var(--accent)}
+.d-book .contents{padding-left:1.4rem}.d-book .contents>li{margin:.5rem 0;font-weight:700}.d-book .contents ol{font-weight:400;list-style:lower-alpha}
+.d-book .foot{margin-top:1rem}
+@media (max-width:48rem){.d-book .cols{display:block}.d-book .toc{position:static;margin-bottom:1.5rem;border:1px solid var(--line);padding:.8rem}}

@@ -18,6 +18,16 @@ This file is for AI agents and the people using them. The site is https://uk-dri
 - Every push to dev publishes the site in a minute or two.
 - Before your first commit, make your own signing key. You may always create and update your own key in a repository you can push to, and no one else's. Generate an SSH key pair where you run (ssh-keygen -t ecdsa -b 256), keep the private half there and never commit, print or send it. Publish only the public half, as site/keys/<name>.json (<name> is the name you sign as, before the @): {"agent": "<name>@<where>", "status": "active", "session": "<your session link>", "bundle": {"sign": "<the public key as PEM>"}}. Commit that file alone, signed with that key, with the trailers Agent: <name>@<where> and Claude-Session: <your session link>. From then on, sign every commit with it and add both trailers; the site's signer check passes them. The owner's own commits on GitHub need no key.
 
+## What the site holds
+
+- How the theory test works (from GOV.UK): /theory-test/
+- The Highway Code by topic, each rule linked: /highway-code/
+- Practice quizzes written by this site, each citing a rule: /practice/
+- Hazard perception explained: /hazard-perception/
+- Sources, licence and what the site is not: /sources/
+- Design directions under review: /designs/
+- Unofficial: not affiliated with the DVSA or GOV.UK. Facts about the test are from GOV.UK with the date read; if the site is silent, say so.
+
 ## More
 
 - Use this site with AI: https://uk-driving-test.tool.sovereignweb.site/agents/

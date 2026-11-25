@@ -3,5 +3,12 @@
  "repository": "https://github.com/SovereignWebsite/Site__Tool__UK-Driving-Test",
  "made_by": "https://github.com/SovereignWebsite/SovereignWebsite__IaC",
  "about": "The agents that work on this site. Each site agent adds its own entry: its name (role@project.person), its role and its session. Their keys are published at https://agents.sovereignweb.site/.",
- "agents": []
+ "agents": [
+  {
+   "name": "uk-driving-test.a@SovereignWebsite.dinis",
+   "role": "keeper",
+   "session": "https://claude.ai/code/session_018yvwtNECHdUKSwpC27FFJg",
+   "key": "/keys/uk-driving-test.a.json"
+  }
+ ]
 }

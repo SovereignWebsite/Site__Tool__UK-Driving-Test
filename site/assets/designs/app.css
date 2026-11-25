@@ -1,0 +1,22 @@
+/* Design 3, Quiz first. A phone-style app: big cards and a bottom tab bar. */
+:root{--bg:#f2f4f8;--fg:#14202e;--muted:#4a5666;--accent:#0b5c8a;--accent-fg:#fff;--line:#d3dae4;--card:#fff;--ok:#17653a;--bad:#a12a2a;--focus:#b45309;--banner-bg:#dde9f3;--banner-fg:#14202e;--r:18px;--measure:40rem}
+@media (prefers-color-scheme:dark){:root{--bg:#0e141b;--fg:#e9eef5;--muted:#aab4c2;--accent:#7cc4ee;--accent-fg:#06202f;--line:#27323f;--card:#161e28;--ok:#6fcf97;--bad:#f2a0a0;--focus:#fbbf24;--banner-bg:#17222e;--banner-fg:#e9eef5}}
+.d-app{padding-bottom:5.2rem}
+.d-app .bar{background:var(--accent);color:var(--accent-fg);padding:.9rem 1rem}
+.d-app .name{color:var(--accent-fg);font-weight:800;text-decoration:none}
+.d-app main{max-width:var(--measure);margin:0 auto;padding:1.2rem 1rem 0}
+.d-app .hero{display:grid;gap:.2rem;padding:1.6rem 1.3rem;background:var(--accent);color:var(--accent-fg);border-radius:var(--r);text-decoration:none;margin:1rem 0}
+.d-app .hero .k{font-size:.9rem;text-transform:uppercase;letter-spacing:.08em}
+.d-app .hero .t{font-size:1.5rem;font-weight:800}
+.d-app .hero:hover{filter:brightness(1.1)}
+.d-app .tiles{list-style:none;padding:0;margin:.6rem 0 1.5rem;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.d-app .tiles a{display:grid;gap:.15rem;height:100%;padding:1rem;background:var(--card);border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--fg)}
+.d-app .tiles .t{font-weight:700;color:var(--accent);text-decoration:underline}
+.d-app .tiles .b{font-size:.9rem;color:var(--muted)}
+.d-app .tiles.two{grid-template-columns:1fr}
+.d-app .tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:repeat(6,1fr);background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.d-app .tabs a{display:grid;place-items:center;min-height:56px;padding:.3rem .1rem;font-size:.78rem;color:var(--muted);text-decoration:none;text-align:center}
+.d-app .tabs a[aria-current]{color:var(--accent);font-weight:800;box-shadow:inset 0 3px 0 var(--accent)}
+.d-app .foot{margin-top:2rem}
+.d-app .q{box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.d-app .family-credit{--family-top:.55rem}

@@ -1,0 +1,11 @@
+{
+ "agent": "uk-driving-test.a@SovereignWebsite.dinis",
+ "role": "keeper",
+ "site": "https://uk-driving-test.tool.sovereignweb.site/",
+ "repository": "SovereignWebsite/Site__Tool__UK-Driving-Test",
+ "operator": "Dinis Cruz (until ownership is handed over)",
+ "started_by": "sites.a (session_018yvwtQ7z3PUt9L5gpZCNzt)",
+ "session": "https://claude.ai/code/session_018yvwtNECHdUKSwpC27FFJg",
+ "key": "site/keys/uk-driving-test.a.json",
+ "branch": "dev"
+}
