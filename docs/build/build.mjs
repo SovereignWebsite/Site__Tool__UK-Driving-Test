@@ -1,7 +1,8 @@
 // Generates the site's content pages and the design directions into site/.
 //   node docs/build/build.mjs        (run from the repository root; commit the output with the source)
 // Live pages use one design (LIVE). The five designs are demonstrated at /designs/<id>/ until the owner picks one.
-import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { READ, SITE, OGL, TEST, TOPICS, QUIZ, ruleUrl, ruleLabel, HC, GOV } from './content.mjs';
 import { DESIGNS, LIVE } from './designs.mjs';
@@ -148,6 +149,19 @@ export const NAV = [
 ];
 const livePath = { home: '/', test: '/theory-test/', hc: '/highway-code/', practice: '/practice/', hazard: '/hazard-perception/', sources: '/sources/' };
 
+// A short content hash on every asset link, so a browser that cached an older file at the same address fetches the new one.
+const ver = (href) => { const f = join('site', href.replace(/^\//, '')); if (!existsSync(f)) return href; return `${href}?v=${createHash('sha256').update(readFileSync(f)).digest('hex').slice(0, 8)}`; };
+// A preview of a design as inline SVG with its own size and plain fills, so it stays small and visible with all CSS blocked.
+const R = (x, y, w, h, f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
+const THUMBS = {
+  plain: ['#fbfaf7', R(4, 4, 44, 4, '#1f5a41') + R(4, 11, 44, 3, '#b9c2bd') + R(4, 17, 44, 3, '#b9c2bd') + R(4, 23, 30, 3, '#b9c2bd')],
+  course: ['#ffffff', R(0, 0, 12, 30, '#c9d3ee') + R(16, 4, 14, 10, '#d5dbe8') + R(33, 4, 15, 10, '#d5dbe8') + R(16, 17, 14, 9, '#d5dbe8') + R(33, 17, 15, 9, '#d5dbe8')],
+  app: ['#f2f4f8', R(0, 0, 52, 8, '#0b5c8a') + R(4, 11, 20, 9, '#d3dae4') + R(28, 11, 20, 9, '#d3dae4') + R(0, 26, 52, 4, '#0b5c8a')],
+  book: ['#fffdf6', R(0, 0, 52, 5, '#7a1f1f') + R(3, 8, 10, 19, '#d8cfbd') + R(17, 9, 32, 3, '#b9ae9a') + R(17, 15, 32, 3, '#b9ae9a') + R(17, 21, 24, 3, '#b9ae9a')],
+  road: ['#0f1115', R(5, 4, 5, 5, '#ffd23f') + R(5, 13, 5, 5, '#ffd23f') + R(5, 22, 5, 5, '#ffd23f') + R(15, 4, 32, 5, '#3a3f4a') + R(15, 13, 32, 5, '#3a3f4a') + R(15, 22, 32, 5, '#3a3f4a')],
+};
+export const thumbSvg = (id, w = 52, h = 30) => `<svg class="thumb" width="${w}" height="${h}" viewBox="0 0 52 30" aria-hidden="true" focusable="false"><rect width="52" height="30" fill="${THUMBS[id][0]}" stroke="#8a8a8a" stroke-width="1"/>${THUMBS[id][1]}</svg>`;
+
 const head = ({ title, desc, path, d }) => `<!doctype html>
 <html lang="en-GB">
 <head>
@@ -171,10 +185,10 @@ const head = ({ title, desc, path, d }) => `<!doctype html>
 <meta name="twitter:description" content="${esc(desc)}">
 <meta name="twitter:image" content="${SITE}/assets/share/card-1200x630.jpg">
 <link rel="canonical" href="${SITE}${path}">
-<link rel="stylesheet" href="/assets/family.css">
-<link rel="stylesheet" href="/assets/base.css">
-<link rel="stylesheet" href="${d.css}">
-<script src="/assets/quiz.js" defer></script>
+<link rel="stylesheet" href="${ver('/assets/family.css')}">
+<link rel="stylesheet" href="${ver('/assets/base.css')}">
+<link rel="stylesheet" href="${ver(d.css)}">
+<script src="${ver('/assets/quiz.js')}" defer></script>
 </head>
 `;
 
@@ -190,13 +204,13 @@ const SHORT = { plain: 'Plain', course: 'Course', app: 'Quiz first', book: 'Book
 const FULL = { plain: 'Plain page', course: 'Course path', app: 'Quiz first', book: 'Highway Code book', road: 'Road map' };
 export const pickerHtml = (ctx) => {
   const cur = ctx && ctx.full ? LIVE : ctx && ctx.id;
-  return `<nav class="picker" aria-label="Choose a design"><p class="pk-t"><span>Choose a design</span> <a class="pk-all" href="/designs/">Compare all</a></p><ul>${DESIGNS.map((d) => `<li><a href="/designs/${d.id}/" title="${esc(FULL[d.id])}"${d.id === cur ? ' aria-current="true"' : ''}><span class="thumb t-${d.id}" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="pk-n">${esc(SHORT[d.id])}</span><span class="sr">${esc(FULL[d.id])}${d.id === cur ? (ctx.full ? ', the live design' : ', the design shown') : ''}</span></a></li>`).join('')}</ul></nav>
+  return `<nav class="picker" aria-label="Choose a design"><p class="pk-t"><span>Choose a design</span> <a class="pk-all" href="/designs/">Compare all</a></p><ul>${DESIGNS.map((d) => `<li><a href="/designs/${d.id}/" title="${esc(FULL[d.id])}"${d.id === cur ? ' aria-current="true"' : ''}>${thumbSvg(d.id)}<span class="pk-n">${esc(SHORT[d.id])}</span><span class="sr">${esc(FULL[d.id])}${d.id === cur ? (ctx.full ? ', the live design' : ', the design shown') : ''}</span></a></li>`).join('')}</ul></nav>
 `;
 };
 
 // A page in a design: the design supplies shell(ctx) which wraps the body.
 export function page(d, ctx, { key, title, h1, desc, path, body, crumbs = [] }) {
-  const unofficial = `<aside class="unofficial" aria-label="Notice"><strong>Unofficial</strong><span class="long">. Not affiliated with, or endorsed by, the DVSA or GOV.UK.</span><span class="short">: not the DVSA or GOV.UK</span></aside>` + pickerHtml(ctx);
+  const unofficial = `<aside class="unofficial" aria-label="Notice"><strong>Unofficial.</strong> <span class="long">Not affiliated with, or endorsed by, the DVSA or GOV.UK.</span><span class="short">Not the DVSA or GOV.UK.</span></aside>` + pickerHtml(ctx);
   const main = d.shell({ ctx, key, h1, body, crumbs, unofficial, family, footer: footer(), NAV, esc });
   return head({ title, desc, path, d }) + main + '\n</html>\n';
 }
@@ -264,6 +278,6 @@ for (const d of DESIGNS) build(d, `/designs/${d.id}`, false);
 
 // ---------- the designs hub and the review log ----------
 import { designsHub, reviewsPage } from './designs-pages.mjs';
-out('designs', designsHub({ DESIGNS, LIVE, head, footer: footer(), family, esc, SITE_TITLE, pickerHtml }));
-out('designs/reviews', reviewsPage({ DESIGNS, LIVE, head, footer: footer(), family, esc, SITE_TITLE, pickerHtml }));
+out('designs', designsHub({ DESIGNS, LIVE, head, footer: footer(), family, esc, SITE_TITLE, pickerHtml, thumbSvg }));
+out('designs/reviews', reviewsPage({ DESIGNS, LIVE, head, footer: footer(), family, esc, SITE_TITLE, pickerHtml, thumbSvg }));
 console.log('built: live design', LIVE, '+', DESIGNS.length, 'demonstrations');
