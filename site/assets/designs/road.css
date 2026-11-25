@@ -20,3 +20,11 @@
 .d-road .btn{color:var(--accent-fg)}.d-road .btn.alt{color:var(--accent)}
 .d-road .card .t{color:var(--accent)}
 .d-road .family-credit{--family-fg:#c9ccd4;--family-fg-strong:#fff;--family-bg:#1c2028}
+.d-road .road li{padding-right:4rem}
+.d-road .road .sign{position:absolute;right:0;top:.2rem}
+.d-road .stop[data-lit]{background:var(--bg)}
+.d-road .stop.lit{background:var(--accent)}
+.d-road .stop:not(.lit)[data-lit]{box-shadow:0 0 0 2px var(--muted)}
+.d-road .stop{background:var(--bg)}
+.d-road .stop[data-lit]{box-shadow:0 0 0 2px var(--accent)}
+.d-road .stop.lit{background:var(--accent)}

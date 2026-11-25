@@ -187,7 +187,7 @@ const footer = (extra = '') => `<footer class="foot">
 
 // A page in a design: the design supplies shell(ctx) which wraps the body.
 export function page(d, ctx, { key, title, h1, desc, path, body, crumbs = [] }) {
-  const unofficial = `<aside class="unofficial" aria-label="Notice"><strong>Unofficial.</strong> Not affiliated with, or endorsed by, the DVSA or GOV.UK.</aside>`;
+  const unofficial = `<aside class="unofficial" aria-label="Notice"><strong>Unofficial</strong><span class="long">. Not affiliated with, or endorsed by, the DVSA or GOV.UK.</span><span class="short">: not the DVSA or GOV.UK</span></aside>`;
   const main = d.shell({ ctx, key, h1, body, crumbs, unofficial, family, footer: footer(), NAV, esc });
   return head({ title, desc, path, d }) + main + '\n</html>\n';
 }
@@ -226,7 +226,7 @@ function build(d, base, full) {
 
   const homeBody = d.home(ctx, homeData(ctx));
   const desc = 'Help for anyone learning for the UK driving theory test: how the test works, the Highway Code by topic, practice questions and hazard perception, linked to GOV.UK. Unofficial.';
-  w('', P({ key: 'home', title: SITE_TITLE, h1: SITE_TITLE, desc, path: full ? '/' : `${base}/`, body: homeBody }));
+  w('', P({ key: 'home', title: SITE_TITLE, h1: 'Get ready for the UK theory test', desc, path: full ? '/' : `${base}/`, body: homeBody }));
 
   if (full) {
     w('theory-test', P({ key: 'test', title: T('How the theory test works'), h1: 'How the theory test works', desc: 'How the UK car theory test works, from GOV.UK: two parts, 57 minutes for 50 questions, 14 hazard clips, pass marks and what to take. Unofficial.', path: '/theory-test/', body: bodyTest(), crumbs: [] }));

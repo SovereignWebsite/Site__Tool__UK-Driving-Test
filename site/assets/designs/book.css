@@ -17,3 +17,4 @@
 .d-book .contents{padding-left:1.4rem}.d-book .contents>li{margin:.5rem 0;font-weight:700}.d-book .contents ol{font-weight:400;list-style:lower-alpha}
 .d-book .foot{margin-top:1rem}
 @media (max-width:48rem){.d-book .cols{display:block}.d-book .toc{position:static;margin-bottom:1.5rem;border:1px solid var(--line);padding:.8rem}}
+.d-book .plate{display:flex;justify-content:center;gap:.6rem;margin:0 0 .6rem}

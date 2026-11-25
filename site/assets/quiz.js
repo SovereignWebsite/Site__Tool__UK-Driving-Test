@@ -43,6 +43,12 @@
       var r = all[el.getAttribute('data-best')];
       el.textContent = r ? '(best: ' + r.best + ' of ' + r.total + ')' : '';
     });
+    var any = Object.keys(all).length > 0;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-lit]'), function (el) {
+      el.classList.toggle('lit', any);
+      var host = el.closest('li') || el; var old = host.querySelector('.sr'); if (old) old.remove();
+      if (any) { var t = document.createElement('span'); t.className = 'sr'; t.textContent = '(you have saved quiz results)'; host.appendChild(t); }
+    });
   }
   function init() {
     Array.prototype.forEach.call(document.querySelectorAll('form.quiz'), setup);

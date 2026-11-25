@@ -4,7 +4,7 @@ import { REVIEWS, RECOMMENDATION } from './reviews.mjs';
 const shellFor = ({ head, footer, family, esc, SITE_TITLE }, { title, h1, desc, path, body }) => `${head({ title: `${title} | ${SITE_TITLE}`, desc, path, d: { css: '/assets/designs/hub.css' } })}<body class="d-hub">
 <a class="skip" href="#main">Skip to content</a>
 ${family}
-<aside class="unofficial" aria-label="Notice"><strong>Unofficial.</strong> Not affiliated with, or endorsed by, the DVSA or GOV.UK.</aside>
+<aside class="unofficial" aria-label="Notice"><strong>Unofficial</strong><span class="long">. Not affiliated with, or endorsed by, the DVSA or GOV.UK.</span><span class="short">: not the DVSA or GOV.UK</span></aside>
 <header class="top"><a class="name" href="/">${SITE_TITLE}</a><nav class="own" aria-label="Designs"><a href="/designs/">Design directions</a><a href="/designs/reviews/">Review log</a></nav></header>
 <main id="main"><h1>${esc(h1)}</h1>
 ${body}

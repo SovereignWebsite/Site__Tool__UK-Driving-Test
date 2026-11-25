@@ -20,3 +20,6 @@
 .d-app .foot{margin-top:2rem}
 .d-app .q{box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .d-app .family-credit{--family-top:.55rem}
+.d-app .hero{grid-template-columns:1fr auto;align-items:center}
+.d-app .hero .sign{grid-column:2;grid-row:1/4;background:#fff;border-radius:12px;padding:6px;width:84px;height:84px}
+.d-app .tiles .best{color:var(--accent);font-weight:700}
