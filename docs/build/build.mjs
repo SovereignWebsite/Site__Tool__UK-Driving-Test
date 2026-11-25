@@ -185,9 +185,18 @@ const footer = (extra = '') => `<footer class="foot">
 <p>A sovereign website, made with the <a href="https://sovereignwebsite.org/">open pattern</a>. Source: <a href="https://github.com/SovereignWebsite/Site__Tool__UK-Driving-Test">github.com/SovereignWebsite/Site__Tool__UK-Driving-Test</a>.${extra}</p>
 </footer>`;
 
+// The "Choose a design" picker, at the top of every page while the designs are open for the owner's pick.
+const SHORT = { plain: 'Plain', course: 'Course', app: 'Quiz first', book: 'Book', road: 'Road map' };
+const FULL = { plain: 'Plain page', course: 'Course path', app: 'Quiz first', book: 'Highway Code book', road: 'Road map' };
+export const pickerHtml = (ctx) => {
+  const cur = ctx && ctx.full ? LIVE : ctx && ctx.id;
+  return `<nav class="picker" aria-label="Choose a design"><p class="pk-t"><span>Choose a design</span> <a class="pk-all" href="/designs/">Compare all</a></p><ul>${DESIGNS.map((d) => `<li><a href="/designs/${d.id}/" title="${esc(FULL[d.id])}"${d.id === cur ? ' aria-current="true"' : ''}><span class="thumb t-${d.id}" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="pk-n">${esc(SHORT[d.id])}</span><span class="sr">${esc(FULL[d.id])}${d.id === cur ? (ctx.full ? ', the live design' : ', the design shown') : ''}</span></a></li>`).join('')}</ul></nav>
+`;
+};
+
 // A page in a design: the design supplies shell(ctx) which wraps the body.
 export function page(d, ctx, { key, title, h1, desc, path, body, crumbs = [] }) {
-  const unofficial = `<aside class="unofficial" aria-label="Notice"><strong>Unofficial</strong><span class="long">. Not affiliated with, or endorsed by, the DVSA or GOV.UK.</span><span class="short">: not the DVSA or GOV.UK</span></aside>`;
+  const unofficial = `<aside class="unofficial" aria-label="Notice"><strong>Unofficial</strong><span class="long">. Not affiliated with, or endorsed by, the DVSA or GOV.UK.</span><span class="short">: not the DVSA or GOV.UK</span></aside>` + pickerHtml(ctx);
   const main = d.shell({ ctx, key, h1, body, crumbs, unofficial, family, footer: footer(), NAV, esc });
   return head({ title, desc, path, d }) + main + '\n</html>\n';
 }
@@ -255,6 +264,6 @@ for (const d of DESIGNS) build(d, `/designs/${d.id}`, false);
 
 // ---------- the designs hub and the review log ----------
 import { designsHub, reviewsPage } from './designs-pages.mjs';
-out('designs', designsHub({ DESIGNS, LIVE, head, footer: footer(), family, esc, SITE_TITLE }));
-out('designs/reviews', reviewsPage({ DESIGNS, LIVE, head, footer: footer(), family, esc, SITE_TITLE }));
+out('designs', designsHub({ DESIGNS, LIVE, head, footer: footer(), family, esc, SITE_TITLE, pickerHtml }));
+out('designs/reviews', reviewsPage({ DESIGNS, LIVE, head, footer: footer(), family, esc, SITE_TITLE, pickerHtml }));
 console.log('built: live design', LIVE, '+', DESIGNS.length, 'demonstrations');
