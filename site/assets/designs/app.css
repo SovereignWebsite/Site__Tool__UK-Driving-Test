@@ -29,3 +29,5 @@
 .d-app .progress .bar2 i{display:block;height:100%;background:var(--accent)}
 .d-app .stepper .q{display:none}.d-app .stepper .q.cur{display:block}
 .js .d-app .quiz .q.done .why{display:block}
+.d-app .more{display:none}
+.d-app .stepper .qn{display:none}

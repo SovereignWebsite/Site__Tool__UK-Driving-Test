@@ -29,3 +29,4 @@
 .d-road .stop[data-lit]{box-shadow:0 0 0 2px var(--accent)}
 .d-road .stop.lit{background:var(--accent)}
 .d-road .state{font-weight:700;color:var(--accent);margin-top:.2rem}
+.d-road .stop:not(.lit)[data-lit]{box-shadow:0 0 0 2px var(--accent)}

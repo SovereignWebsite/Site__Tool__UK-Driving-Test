@@ -50,4 +50,15 @@ export const REVIEWS = [
       'Plain page: no top links on its home page, where the list below does the job.',
       'Not done yet: giving topic and quiz pages a different structure in each design. That is a larger piece of work, offered for round 5 if the owner wants it before choosing.',
     ] },
+  { id: 'round-4', title: 'Round 4: a.design review', who: 'a.design. Review: https://design.agents.sovereignweb.site/factory/dinis-cruz/account-a/a.design/reviews/uk-driving-test-2026-11-25-round-4.html (reviewed from source at 1583292)', date: '25 November 2026', status: 'done; leftovers fixed',
+    findings: [
+      'All seven round 3 items verified done; axe clean; the quiz page is about 1,650 pixels tall on a phone, down from 4,900.',
+      'Quiz first\u2019s quiz opened with a four-line intro, and showed \u201cQuestion 1 of 9\u201d twice.',
+      'Road map\u2019s practice stop drew as a white ring among yellow ones when nothing was saved.',
+      'Round 5, a different quiz and topic page for each direction, is optional and the owner\u2019s call. Recommendation unchanged: Quiz first.',
+    ],
+    changes: [
+      'Quiz first: the intro is one line on a phone and the question is on the first screen; one counter, with the bar.',
+      'Road map: every stop is a yellow ring, and the practice stop fills in when results are saved.',
+    ] },
 ];
